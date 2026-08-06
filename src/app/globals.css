@@ -1,26 +1,130 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ============================================================
+   DESIGN TOKENS — MyDiet (sesuai DESIGN.md)
+   ============================================================ */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* --- Brand / Primary Green --- */
+  --color-primary:              #376B00;
+  --color-primary-dark:         #246D00;
+  --color-primary-dark-alt:     #2D5900;
+  --color-primary-alt:          #267101;
+  --color-primary-hover:        #4E9A2E;
+  --color-primary-light-icon:   #8BD44D;
+  --color-primary-light-icon-alt: #A2F57C;
+  --color-primary-soft-bg:      #EAF7DC;
+
+  /* --- Neutral / Text --- */
+  --color-text-dark:            #1B1B1C;
+  --color-text-dark-alt:        #1F1F1F;
+  --color-text-secondary:       #414939;
+  --color-text-muted:           #8A8A8A;
+  --color-text-placeholder:     #6B7280;
+  --color-border:               #EDEDED;
+  --color-bg-neutral:           #F0EDED;
+  --color-bg-app:               #FCF9F8;
+  --color-white:                #FFFFFF;
+
+  /* --- Semantic / Accent --- */
+  --color-danger:               #BA1A1A;
+  --color-danger-bg:            #FFDAD6;
+  --color-danger-alt:           #E85B4E;
+  --color-warning-bg:           #FFAE87;
+  --color-warning-text:         #9F4203;
+  --color-warning-text-dark:    #7A3000;
+  --color-warning-strong:       #873600;
+  --color-icon-bg-neutral:      #E5E2E1;
+
+  /* --- Border Radius --- */
+  --radius-card:    20px;
+  --radius-input:   12px;
+  --radius-btn:     20px;
+  --radius-badge:   9999px;
+  --radius-icon:    9999px;
+  --radius-nav:     50px;
+
+  /* --- Typography --- */
+  --font-sans: "Poppins", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ============================================================
+   BASE STYLES
+   ============================================================ */
+:root {
+  --background: #FCF9F8;
+  --foreground: #1B1B1C;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================================
+   UTILITY SHORTCUTS (Design-Token Driven)
+   ============================================================ */
+
+/* Tombol primer hijau — fill #376B00, radius 20, teks putih SemiBold */
+.btn-primary {
+  @apply bg-primary text-white font-semibold rounded-btn
+         px-6 py-4 w-full text-base
+         transition-colors duration-200
+         hover:bg-primary-hover active:scale-[0.98];
+}
+
+/* Card standar — putih, border #EDEDED, radius 20 */
+.card {
+  @apply bg-white border border-border rounded-card p-4;
+}
+
+/* Card highlight — background hijau muda #EAF7DC */
+.card-soft {
+  @apply bg-primary-soft-bg border border-border rounded-card p-4;
+}
+
+/* Card netral — background #F0EDED */
+.card-neutral {
+  @apply bg-bg-neutral border border-border rounded-card p-4;
+}
+
+/* Input field standar */
+.input-field {
+  @apply w-full bg-white border border-border rounded-input
+         px-4 py-3 text-sm text-text-dark
+         placeholder:text-text-placeholder
+         focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary
+         transition-colors duration-150;
+}
+
+/* Badge/pill hijau */
+.badge-primary {
+  @apply bg-primary text-white text-xs font-semibold
+         px-3 py-1 rounded-badge;
+}
+
+/* Badge soft */
+.badge-soft {
+  @apply bg-primary-soft-bg text-primary text-xs font-semibold
+         px-3 py-1 rounded-badge;
+}
+
+/* Icon circle container */
+.icon-circle {
+  @apply w-10 h-10 rounded-icon flex items-center justify-center flex-shrink-0;
 }

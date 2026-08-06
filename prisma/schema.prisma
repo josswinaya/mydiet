@@ -1,0 +1,108 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Gender {
+  MALE
+  FEMALE
+}
+
+enum ActivityLevel {
+  SEDENTARY    // Sedikit atau tidak ada olahraga
+  LIGHT        // Olahraga ringan 1-3x/minggu
+  MODERATE     // Olahraga sedang 3-5x/minggu
+  ACTIVE       // Olahraga berat 6-7x/minggu
+  VERY_ACTIVE  // Olahraga sangat berat + aktivitas fisik tinggi
+}
+
+model User {
+  id             String          @id @default(cuid())
+  email          String          @unique
+  passwordHash   String
+  name           String?
+  age            Int?
+  heightCm       Float?
+  weightKg       Float?          // berat awal saat register
+  gender         Gender?
+  activityLevel  ActivityLevel?  @default(SEDENTARY)
+  targetWeightKg Float?
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  weightLogs      WeightLog[]
+  foodEntries     FoodEntry[]
+  exerciseEntries ExerciseEntry[]
+  predictions     Prediction[]
+}
+
+model WeightLog {
+  id       String   @id @default(cuid())
+  userId   String
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  weightKg Float
+  loggedAt DateTime @default(now())
+
+  @@index([userId, loggedAt])
+}
+
+/// Seed data — daftar makanan umum beserta kalori per porsi standar
+model FoodItem {
+  id       String @id @default(cuid())
+  name     String @unique
+  calories Int    // kalori per porsi standar
+  unit     String // deskripsi porsi, misal "100g", "1 piring", "1 buah"
+}
+
+/// Seed data — tabel MET (Metabolic Equivalent of Task) untuk kalkulasi kalori olahraga
+/// Formula: kalori = MET × berat(kg) × durasi(jam)
+model MetActivity {
+  id   String @id @default(cuid())
+  name String @unique
+  met  Float  // nilai MET standar
+  unit String @default("menit") // satuan durasi
+}
+
+model FoodEntry {
+  id       String   @id @default(cuid())
+  userId   String
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  foodName String   // nama bebas (bisa dari FoodItem atau input manual)
+  calories Int
+  mealType String   // "sarapan" | "makan_siang" | "makan_malam" | "camilan"
+  loggedAt DateTime @default(now())
+
+  @@index([userId, loggedAt])
+}
+
+model ExerciseEntry {
+  id              String   @id @default(cuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  activityName    String
+  durationMinutes Int
+  caloriesBurned  Int
+  loggedAt        DateTime @default(now())
+
+  @@index([userId, loggedAt])
+}
+
+model Prediction {
+  id               String   @id @default(cuid())
+  userId           String
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  avgDailyBalance  Float    // rata-rata surplus/defisit kalori harian
+  projectedWeeks   Int      // berapa minggu ke depan diproyeksikan
+  projectedDeltaKg Float    // hasil hitungan formula (bukan dari AI)
+  aiInsight        String   // narasi dari Gemini
+  createdAt        DateTime @default(now())
+
+  @@index([userId, createdAt])
+}

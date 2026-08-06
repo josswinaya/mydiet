@@ -16,15 +16,16 @@ Format: `[Tanggal] — [Ringkasan pekerjaan]`
 
 | Tanggal | Progres | Catatan |
 |---|---|---|
-| YYYY-MM-DD | Contoh: Setup Next.js + PostgreSQL + Prisma | Skema awal migrasi berhasil |
-| | | |
-| | | |
-| | | |
-| | | |
-| | | |
-| | | |
-| | | |
-| | | |
+| 2026-08-06 | Setup credential: Neon PostgreSQL + Gemini API Key + `.env.local` | NEXTAUTH_SECRET di-generate via Node.js crypto |
+| 2026-08-06 | Install dependencies: Prisma v5, NextAuth v5 beta, bcryptjs, recharts, @google/genai, ts-node | Downgrade Prisma v7→v5 karena breaking change `prisma.config.ts` |
+| 2026-08-06 | Buat struktur folder: `src/components`, `lib`, `hooks`, `types`, `actions` + folder `prisma/` | Sesuai arsitektur GEMINI.md |
+| 2026-08-06 | Setup Prisma schema: User, WeightLog, FoodItem, MetActivity, FoodEntry, ExerciseEntry, Prediction | Tambah model MetActivity (tidak ada di PRD tapi dibutuhkan seed) |
+| 2026-08-06 | Konfigurasi Tailwind v4 + Design Tokens dari DESIGN.md di `globals.css` | Font Poppins via Google Fonts, semua color token dari DESIGN.md |
+| 2026-08-06 | Buat lib: `prisma.ts` (singleton), `auth.ts` (NextAuth), `calories.ts` (BMR/TDEE/MET) | Formula BMR Mifflin-St Jeor, proyeksi 7700 kcal/kg |
+| 2026-08-06 | Buat types: `index.ts` (semua interface), `next-auth.d.ts` (session augmentation) | Semua kontrak data sudah terdefinisi |
+| 2026-08-06 | `prisma migrate dev --name init` → database Neon tersinkron | Migration SQL berhasil diapply ke Neon PostgreSQL |
+| 2026-08-06 | `prisma db seed` → 53 FoodItems + 30 MetActivities tersimpan | Makanan umum Indonesia + aktivitas olahraga dengan nilai MET |
+| 2026-08-06 | `npm run dev` berjalan di http://localhost:3000 ✅ | Next.js 16.2.12 + Turbopack, env loaded dari `.env.local` dan `.env` |
 | | | |
 | | | |
 | | | |
