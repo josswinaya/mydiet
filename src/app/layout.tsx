@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Geist } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
   title: "MyDiet — Kalori Tracker & Prediksi Berat Badan",
@@ -14,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" className="h-full">
+    <html lang="id" className={cn("h-full", "font-sans", geist.variable)}>
       <body className="min-h-full flex flex-col bg-bg-app antialiased">
         {children}
       </body>

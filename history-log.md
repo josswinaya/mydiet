@@ -26,6 +26,13 @@ Format: `[Tanggal] — [Ringkasan pekerjaan]`
 | 2026-08-06 | `prisma migrate dev --name init` → database Neon tersinkron | Migration SQL berhasil diapply ke Neon PostgreSQL |
 | 2026-08-06 | `prisma db seed` → 53 FoodItems + 30 MetActivities tersimpan | Makanan umum Indonesia + aktivitas olahraga dengan nilai MET |
 | 2026-08-06 | `npm run dev` berjalan di http://localhost:3000 ✅ | Next.js 16.2.12 + Turbopack, env loaded dari `.env.local` dan `.env` |
+| 2026-08-07 | Init Shadcn/ui v4 + install lucide-react | Shadcn tambahkan `button.tsx`, `utils.ts`, update globals.css |
+| 2026-08-07 | Buat `src/actions/auth.ts`: loginAction + registerAction (Server Actions) | Auto-login setelah register, redirect ke /profile/setup |
+| 2026-08-07 | Buat `src/actions/profile.ts`: saveProfileAction (validasi + transaksi Prisma) | Update user + buat WeightLog awal dalam 1 transaksi |
+| 2026-08-07 | Buat API route `POST /api/auth/register` dengan validasi + bcrypt hash | Validasi email, cek duplikat, hash cost 12 |
+| 2026-08-07 | Buat halaman Login `/login` + Register `/register` sesuai DESIGN.md | Hero gradient hijau, form container rounded, error state |
+| 2026-08-07 | Buat halaman Setup Profil `/profile/setup` | Radio pill gender, card input fisik, radio card aktivitas dengan :has CSS |
+| 2026-08-07 | Buat middleware proteksi route + app/auth route groups + dashboard placeholder | Zero TypeScript errors, `npm run dev` berjalan ✅ |
 | | | |
 | | | |
 | | | |
