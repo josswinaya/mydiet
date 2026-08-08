@@ -34,18 +34,25 @@
   --color-danger:               #BA1A1A;
   --color-danger-bg:            #FFDAD6;
   --color-danger-alt:           #E85B4E;
-  --color-warning-bg:           #FFAE87;
   --color-warning-text:         #9F4203;
   --color-warning-text-dark:    #7A3000;
   --color-warning-strong:       #873600;
   --color-icon-bg-neutral:      #E5E2E1;
 
-  /* --- Border Radius --- */
-  --radius-card:    20px;
-  --radius-input:   12px;
-  --radius-btn:     20px;
-  --radius-badge:   9999px;
-  --radius-icon:    9999px;
+  /* --- Semantic Status Colors --- */
+  --color-warning:              #F59E0B;
+  --color-warning-bg:           #FEF3C7;
+  --color-success:              #16A34A;
+  --color-success-bg:           #DCFCE7;
+  --color-danger:               #DC2626;
+  --color-danger-bg:            #FEE2E2;
+
+  /* --- Border Radius (sesuai DESIGN.md) --- */
+  --radius-card:   20px;
+  --radius-btn:    20px;
+  --radius-input:  16px;
+  --radius-icon:   50%;
+  --radius-badge:  999px;
   --radius-nav:     50px;
 
   /* --- Typography --- */

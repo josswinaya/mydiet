@@ -33,6 +33,11 @@ Format: `[Tanggal] — [Ringkasan pekerjaan]`
 | 2026-08-07 | Buat halaman Login `/login` + Register `/register` sesuai DESIGN.md | Hero gradient hijau, form container rounded, error state |
 | 2026-08-07 | Buat halaman Setup Profil `/profile/setup` | Radio pill gender, card input fisik, radio card aktivitas dengan :has CSS |
 | 2026-08-07 | Buat middleware proteksi route + app/auth route groups + dashboard placeholder | Zero TypeScript errors, `npm run dev` berjalan ✅ |
+| 2026-08-08 | Rename `middleware.ts` → `proxy.ts` (Next.js 16 convention) | Fix deprecation warning ⚠️ → ✅ |
+| 2026-08-08 | Update Prisma schema v2: FoodItem (gizi per 100g), FoodEntry & ExerciseEntry (relasi FK), enum MealType | Migrasi v2 berhasil ke Neon, seed ulang 45 FoodItems + 30 MetActivities |
+| 2026-08-08 | Buat API routes: `GET/POST/DELETE /api/food-entries`, `GET/POST/DELETE /api/exercise-entries`, `GET /api/food-items`, `GET /api/activities` | Auth guard + ownership check di semua endpoint |
+| 2026-08-08 | Buat komponen: `FoodSearch`, `FoodLogForm`, `ExerciseLogForm`, `LogPageClient` | Debounced search, live preview kalori, optimistic UI delete, toast Sonner |
+| 2026-08-08 | Buat halaman `/log` (server component) + install sonner + tambah Toaster ke root layout | Zero TypeScript errors ✅ |
 | | | |
 | | | |
 | | | |
