@@ -36,7 +36,7 @@ export function PasswordInput({
         disabled={disabled}
         required={required}
         autoComplete={autoComplete ?? (name === "password" ? "current-password" : "new-password")}
-        className="input-field pr-12"
+        className="input-field !pr-12"
       />
       <button
         type="button"

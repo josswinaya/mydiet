@@ -79,7 +79,7 @@ export default function LoginPage() {
                 placeholder="contoh@email.com"
                 required
                 autoComplete="email"
-                className="input-field pl-10"
+                className="input-field !pl-10"
               />
             </div>
           </div>

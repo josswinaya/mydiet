@@ -2,6 +2,15 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Toaster } from "sonner";
 
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-poppins",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "MyDiet — Kalori Tracker & Prediksi Berat Badan",
   description:
@@ -15,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" className="h-full">
+    <html lang="id" className={`h-full ${poppins.variable}`}>
       <body className="min-h-full flex flex-col bg-bg-app antialiased font-sans">
         {children}
         <Toaster

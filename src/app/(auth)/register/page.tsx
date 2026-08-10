@@ -78,7 +78,7 @@ export default function RegisterPage() {
                 type="text"
                 placeholder="John Doe"
                 autoComplete="name"
-                className="input-field pl-10"
+                className="input-field !pl-10"
               />
             </div>
           </div>
@@ -100,7 +100,7 @@ export default function RegisterPage() {
                 placeholder="contoh@email.com"
                 required
                 autoComplete="email"
-                className="input-field pl-10"
+                className="input-field !pl-10"
               />
             </div>
           </div>
