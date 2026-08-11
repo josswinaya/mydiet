@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Utensils, Dumbbell, ChevronRight, Flame } from "lucide-react";
+import { Utensils, Dumbbell, ChevronRight, Flame, Footprints, Activity } from "lucide-react";
 
 interface FoodEntryPreview {
   id: string;
@@ -89,7 +89,16 @@ export function TodayEntries({ foodEntries, exerciseEntries }: TodayEntriesProps
       {previewExercise.map((entry) => (
         <div key={entry.id} className="flex items-center gap-3">
           <div className="icon-circle bg-success-bg flex-shrink-0 w-8 h-8">
-            <Dumbbell size={14} className="text-success" />
+            {(() => {
+              const name = entry.activity.name.toLowerCase();
+              if (name.includes("lari") || name.includes("jalan") || name.includes("jog")) {
+                return <Footprints size={14} className="text-success" />;
+              }
+              if (name.includes("beban") || name.includes("gym") || name.includes("angkat")) {
+                return <Dumbbell size={14} className="text-success" />;
+              }
+              return <Activity size={14} className="text-success" />;
+            })()}
           </div>
           <div className="flex-1 min-w-0">
             <p className="text-xs font-medium text-text-dark truncate">

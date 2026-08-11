@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { Utensils, Dumbbell, Flame, TrendingDown, Trash2 } from "lucide-react";
+import { Utensils, Dumbbell, Flame, TrendingDown, Trash2, Footprints, Activity } from "lucide-react";
 import { toast } from "sonner";
 import { FoodLogForm } from "./food-log-form";
 import { ExerciseLogForm } from "./exercise-log-form";
@@ -230,7 +230,16 @@ export function LogPageClient({
             {exerciseEntries.map((entry) => (
               <div key={entry.id} className="card flex items-center gap-3 py-3">
                 <div className="icon-circle bg-success-bg flex-shrink-0">
-                  <Dumbbell size={16} className="text-success" />
+                  {(() => {
+                    const name = entry.activity.name.toLowerCase();
+                    if (name.includes("lari") || name.includes("jalan") || name.includes("jog")) {
+                      return <Footprints size={16} className="text-success" />;
+                    }
+                    if (name.includes("beban") || name.includes("gym") || name.includes("angkat")) {
+                      return <Dumbbell size={16} className="text-success" />;
+                    }
+                    return <Activity size={16} className="text-success" />;
+                  })()}
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium text-text-dark truncate">
