@@ -171,8 +171,8 @@ export default async function DashboardPage() {
           <div className="grid grid-cols-3 gap-2 mt-5 pt-4 border-t border-border">
             {[
               { label: "Target", value: tdee, color: "text-text-dark" },
-              { label: "Masuk", value: totalCaloriesIn, color: "text-warning" },
-              { label: "Terbakar", value: totalCaloriesBurned, color: "text-success" },
+              { label: "Masuk", value: totalCaloriesIn, color: "text-success" },
+              { label: "Terbakar", value: totalCaloriesBurned, color: "text-danger" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <p className={`text-base font-bold ${stat.color}`}>{stat.value}</p>

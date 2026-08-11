@@ -68,8 +68,8 @@ export function TodayEntries({ foodEntries, exerciseEntries }: TodayEntriesProps
       {/* Food entries */}
       {previewFood.map((entry) => (
         <div key={entry.id} className="flex items-center gap-3">
-          <div className="icon-circle bg-warning-bg flex-shrink-0 w-8 h-8">
-            <Utensils size={14} className="text-warning" />
+          <div className="icon-circle bg-success-bg flex-shrink-0 w-8 h-8">
+            <Utensils size={14} className="text-success" />
           </div>
           <div className="flex-1 min-w-0">
             <p className="text-xs font-medium text-text-dark truncate">
@@ -79,7 +79,7 @@ export function TodayEntries({ foodEntries, exerciseEntries }: TodayEntriesProps
               {entry.amountGrams}g · {MEAL_LABEL[entry.mealType] ?? entry.mealType}
             </p>
           </div>
-          <span className="text-xs font-semibold text-warning flex-shrink-0">
+          <span className="text-xs font-semibold text-success flex-shrink-0">
             {entry.calories} kcal
           </span>
         </div>
@@ -88,16 +88,16 @@ export function TodayEntries({ foodEntries, exerciseEntries }: TodayEntriesProps
       {/* Exercise entries */}
       {previewExercise.map((entry) => (
         <div key={entry.id} className="flex items-center gap-3">
-          <div className="icon-circle bg-success-bg flex-shrink-0 w-8 h-8">
+          <div className="icon-circle bg-danger-bg flex-shrink-0 w-8 h-8">
             {(() => {
               const name = entry.activity.name.toLowerCase();
               if (name.includes("lari") || name.includes("jalan") || name.includes("jog")) {
-                return <Footprints size={14} className="text-success" />;
+                return <Footprints size={14} className="text-danger" />;
               }
               if (name.includes("beban") || name.includes("gym") || name.includes("angkat")) {
-                return <Dumbbell size={14} className="text-success" />;
+                return <Dumbbell size={14} className="text-danger" />;
               }
-              return <Activity size={14} className="text-success" />;
+              return <Activity size={14} className="text-danger" />;
             })()}
           </div>
           <div className="flex-1 min-w-0">
@@ -108,7 +108,7 @@ export function TodayEntries({ foodEntries, exerciseEntries }: TodayEntriesProps
               {entry.durationMinutes} menit
             </p>
           </div>
-          <span className="text-xs font-semibold text-success flex-shrink-0 flex items-center gap-0.5">
+          <span className="text-xs font-semibold text-danger flex-shrink-0 flex items-center gap-0.5">
             <Flame size={11} />-{entry.caloriesBurned} kcal
           </span>
         </div>
