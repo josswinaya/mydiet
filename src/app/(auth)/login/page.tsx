@@ -3,7 +3,7 @@
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import Link from "next/link";
-import { Mail, ArrowRight, Leaf } from "lucide-react";
+import { Mail, ArrowRight } from "lucide-react";
 import { loginAction } from "@/actions/auth";
 import { PasswordInput } from "@/components/ui/password-input";
 
@@ -29,14 +29,13 @@ export default function LoginPage() {
   return (
     <main className="min-h-screen bg-bg-app flex flex-col">
       {/* Hero image area */}
-      <div className="relative w-full h-56 bg-gradient-to-br from-primary to-primary-hover overflow-hidden flex-shrink-0">
-        <div className="absolute inset-0 flex items-center justify-center opacity-20">
-          <div className="grid grid-cols-4 gap-6">
-            {Array.from({ length: 12 }).map((_, i) => (
-              <Leaf key={i} size={40} className="text-white rotate-12" />
-            ))}
-          </div>
-        </div>
+      <div style={{ position: "relative", width: "100%", height: "224px", overflow: "hidden", flexShrink: 0, backgroundColor: "#376B00" }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/auth-hero.webp"
+          alt="Healthy vegetables"
+          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover" }}
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-bg-app via-transparent to-transparent" />
       </div>
 

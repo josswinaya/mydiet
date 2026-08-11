@@ -34,8 +34,9 @@ export const config = {
      * - api/auth (NextAuth routes)
      * - _next/static (static files)
      * - _next/image (image optimization)
+     * - images (public image assets)
      * - favicon.ico, sitemap.xml, robots.txt
      */
-    "/((?!api/auth|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)",
+    "/((?!api/auth|_next/static|_next/image|images|favicon.ico|sitemap.xml|robots.txt).*)",
   ],
 };
