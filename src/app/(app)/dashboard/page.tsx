@@ -132,7 +132,7 @@ export default async function DashboardPage() {
           <div>
             <p className="text-xs text-white/70 mb-1">{dateStr}</p>
             <h1 className="text-xl font-bold">
-              {greeting}, {displayName}! 👋
+              {greeting}, {displayName}!
             </h1>
           </div>
           <Link
