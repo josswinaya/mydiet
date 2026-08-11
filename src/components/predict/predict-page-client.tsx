@@ -86,7 +86,7 @@ export function PredictPageClient({
                   : "bg-white text-text-dark border border-border hover:bg-bg-neutral"
                 }`}
             >
-              {w} Mgg
+              {w} W
             </button>
           ))}
         </div>
