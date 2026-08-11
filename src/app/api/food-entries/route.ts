@@ -4,6 +4,8 @@ import { prisma } from "@/lib/prisma";
 import { calculateCaloriesBurned } from "@/lib/calories";
 import type { ApiResponse } from "@/types";
 
+export const dynamic = "force-dynamic";
+
 /** GET /api/food-entries?date=2026-08-08 — get food entries for a specific date */
 export async function GET(request: Request) {
   try {

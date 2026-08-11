@@ -3,6 +3,8 @@ import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import type { ApiResponse } from "@/types";
 
+export const dynamic = "force-dynamic";
+
 /** GET /api/activities?q=lari — search MET activities */
 export async function GET(request: Request) {
   try {

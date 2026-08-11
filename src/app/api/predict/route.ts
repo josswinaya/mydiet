@@ -5,6 +5,8 @@ import { calculateTDEE, projectWeightChange } from "@/lib/calories";
 import { GoogleGenAI } from "@google/genai";
 import type { ApiResponse } from "@/types";
 
+export const dynamic = "force-dynamic";
+
 // Initialize Gemini Client
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
