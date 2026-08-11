@@ -141,7 +141,7 @@ export function ExerciseLogForm({ userWeightKg = 70, onSuccess }: ExerciseLogFor
               setQuery(e.target.value);
               setSelected(null);
             }}
-            className="input-field pl-10 pr-10"
+            className="input-field !px-10"
             id="exercise-search-input"
             autoComplete="off"
           />
@@ -180,7 +180,7 @@ export function ExerciseLogForm({ userWeightKg = 70, onSuccess }: ExerciseLogFor
               max={480}
               value={duration}
               onChange={(e) => setDuration(e.target.value)}
-              className="input-field pl-10"
+              className="input-field !pl-10"
             />
           </div>
         </div>

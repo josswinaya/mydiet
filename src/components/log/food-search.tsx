@@ -98,7 +98,7 @@ export function FoodSearch({ onSelect }: FoodSearchProps) {
           placeholder="Cari makanan... (mis. nasi putih)"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="input-field pl-10 pr-10"
+          className="input-field !px-10"
           autoComplete="off"
           id="food-search-input"
         />
