@@ -75,11 +75,19 @@ export default async function ChartPage() {
     };
   });
 
+  const todayStart = new Date(today);
+  todayStart.setHours(0, 0, 0, 0);
+
+  const hasLoggedToday = weightLogs.some(
+    (log) => new Date(log.loggedAt) >= todayStart
+  );
+
   return (
     <ChartPageClient 
       weightLogs={weightLogs} 
       calorieHistory={calorieHistory} 
       currentWeight={currentWeight}
+      hasLoggedToday={hasLoggedToday}
     />
   );
 }

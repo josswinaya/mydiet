@@ -14,13 +14,7 @@ export const metadata: Metadata = {
   description: "Pantau asupan kalori dan progres diet harian Anda.",
 };
 
-// Quick action buttons
-const QUICK_ACTIONS = [
-  { href: "/log", label: "Log Makanan", icon: Utensils, color: "bg-warning-bg text-warning" },
-  { href: "/log", label: "Catat Olahraga", icon: Dumbbell, color: "bg-success-bg text-success" },
-  { href: "/chart", label: "Grafik", icon: Weight, color: "bg-primary/10 text-primary" },
-  { href: "/predict", label: "Prediksi AI", icon: Sparkles, color: "bg-primary/10 text-primary" },
-] as const;
+
 
 function getGreeting(): string {
   const hour = new Date().getHours();
@@ -188,28 +182,7 @@ export default async function DashboardPage() {
           </div>
         </div>
 
-        {/* ── Quick actions ── */}
-        <div className="grid grid-cols-4 gap-2">
-          {QUICK_ACTIONS.map((action) => {
-            const Icon = action.icon;
-            return (
-              <Link
-                key={action.label}
-                href={action.href}
-                id={`quick-${action.label.toLowerCase().replace(/\s+/g, "-")}`}
-                className="flex flex-col items-center gap-2 p-3 bg-white rounded-[16px]
-                  border border-border hover:bg-bg-neutral transition-colors text-center"
-              >
-                <div className={`w-10 h-10 rounded-full flex items-center justify-center ${action.color}`}>
-                  <Icon size={18} />
-                </div>
-                <span className="text-[10px] text-text-secondary font-medium leading-tight">
-                  {action.label}
-                </span>
-              </Link>
-            );
-          })}
-        </div>
+
 
         {/* ── Macro panel ── */}
         <MacroPanel

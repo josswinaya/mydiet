@@ -144,7 +144,7 @@ export function PredictPageClient({
           <div className="card">
             <h3 className="text-sm font-semibold text-text-dark flex items-center gap-2 mb-3">
               <Sparkles size={16} className="text-warning" /> 
-              Analisis Gemini AI
+              Analisis AI
             </h3>
             <div className="text-sm text-text-secondary leading-relaxed whitespace-pre-wrap">
               {prediction.aiInsight}

@@ -24,22 +24,13 @@ export async function POST(req: Request) {
 
     const date = loggedAt ? new Date(loggedAt) : new Date();
 
-    // Use a transaction:
-    // 1. Create the weight log entry.
-    // 2. Update the user's current weight so TDEE uses the newest weight.
-    const [weightLog] = await prisma.$transaction([
-      prisma.weightLog.create({
-        data: {
-          userId: session.user.id,
-          weightKg,
-          loggedAt: date,
-        },
-      }),
-      prisma.user.update({
-        where: { id: session.user.id },
-        data: { weightKg },
-      }),
-    ]);
+    const weightLog = await prisma.weightLog.create({
+      data: {
+        userId: session.user.id,
+        weightKg,
+        loggedAt: date,
+      },
+    });
 
     return NextResponse.json<ApiResponse>({
       success: true,

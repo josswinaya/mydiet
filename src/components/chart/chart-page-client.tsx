@@ -15,7 +15,7 @@ import {
   Bar,
   Legend,
 } from "recharts";
-import { Scale } from "lucide-react";
+import { Scale, CheckCircle } from "lucide-react";
 
 interface WeightLogItem {
   id: string;
@@ -33,16 +33,18 @@ interface ChartPageClientProps {
   weightLogs: WeightLogItem[];
   calorieHistory: CalorieHistoryItem[];
   currentWeight: number;
+  hasLoggedToday: boolean;
 }
 
 export function ChartPageClient({
   weightLogs,
   calorieHistory,
   currentWeight,
+  hasLoggedToday,
 }: ChartPageClientProps) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
-  const [weightInput, setWeightInput] = useState<string>("");
+  const [weightInput, setWeightInput] = useState<string>(currentWeight.toString());
 
   // Format weight logs for Recharts
   const weightData = weightLogs.map((log) => ({
@@ -90,38 +92,51 @@ export function ChartPageClient({
 
       {/* ── Log Weight Card ── */}
       <div className="card bg-primary-soft-bg border-none">
-        <div className="flex items-center gap-3 mb-3">
-          <div className="icon-circle bg-white text-primary w-10 h-10 shadow-sm">
-            <Scale size={20} />
+        <div className="flex flex-col gap-3">
+          <div className="flex items-center gap-3">
+            <div className="icon-circle bg-white text-primary w-10 h-10 shadow-sm flex-shrink-0">
+              <Scale size={20} />
+            </div>
+            <div>
+              <p className="text-xs text-primary font-semibold uppercase tracking-wider mb-1">
+                Catat Hari Ini
+              </p>
+              <div className="flex items-center gap-2">
+                 <span className="text-sm text-text-dark font-medium">Berat Saat Ini:</span>
+                 {!hasLoggedToday ? (
+                   <div className="flex items-center">
+                     <input
+                       type="number"
+                       step="0.1"
+                       value={weightInput}
+                       onChange={(e) => setWeightInput(e.target.value)}
+                       disabled={isPending}
+                       className="w-16 border-b-2 border-primary/30 focus:border-primary outline-none bg-transparent font-bold text-sm text-center px-1 transition-colors"
+                       required
+                     />
+                     <span className="text-sm font-bold ml-1">kg</span>
+                   </div>
+                 ) : (
+                   <span className="text-sm font-bold">{weightLogs[weightLogs.length - 1]?.weightKg || currentWeight} kg</span>
+                 )}
+              </div>
+            </div>
           </div>
-          <div>
-            <p className="text-xs text-primary font-semibold uppercase tracking-wider">
-              Catat Hari Ini
-            </p>
-            <p className="text-sm text-text-dark font-medium">
-              Berat Saat Ini: <span className="font-bold">{currentWeight} kg</span>
-            </p>
-          </div>
+
+          {!hasLoggedToday ? (
+             <button
+               onClick={handleLogWeight}
+               disabled={isPending || !weightInput}
+               className="btn-primary w-full py-3 mt-1"
+             >
+               {isPending ? "Menyimpan..." : "Simpan"}
+             </button>
+          ) : (
+             <div className="text-xs font-medium text-success bg-success/10 px-3 py-2.5 rounded-lg border border-success/20 flex items-center justify-center gap-2 mt-1">
+               <CheckCircle size={14} /> Berat badan hari ini sudah dicatat
+             </div>
+          )}
         </div>
-        <form onSubmit={handleLogWeight} className="flex gap-2">
-          <input
-            type="number"
-            step="0.1"
-            placeholder="Contoh: 70.5"
-            value={weightInput}
-            onChange={(e) => setWeightInput(e.target.value)}
-            disabled={isPending}
-            className="input-field flex-1 bg-white"
-            required
-          />
-          <button
-            type="submit"
-            disabled={isPending}
-            className="btn-primary w-auto px-5 py-3"
-          >
-            {isPending ? "..." : "Simpan"}
-          </button>
-        </form>
       </div>
 
       {/* ── Weight Line Chart ── */}

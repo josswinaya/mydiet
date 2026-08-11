@@ -112,7 +112,7 @@ Instruksi:
       aiInsight = response.text || "Tidak ada saran AI saat ini.";
     } catch (aiError) {
       console.error("Gemini API Error:", aiError);
-      aiInsight = "Maaf, prediksi AI sedang tidak dapat diakses saat ini, namun kalkulasi matematis tetap berjalan.";
+      aiInsight = "Meskipun saat ini AI sedang tidak dapat diakses, berdasarkan kalkulasi matematis dari data log Anda, pertahankan konsistensi harian ini untuk mencapai target yang Anda impikan. Terus semangat dan pantau kalori Anda!";
     }
 
     // 7. Simpan Prediksi ke Database
